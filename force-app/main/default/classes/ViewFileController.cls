@@ -14,7 +14,7 @@ public class ViewFileController {
             for (ContentDocumentLink link : links) {
                 contentDocumentIds.add(link.ContentDocumentId);
             }
-            files = [SELECT Id, Title, CreatedDate FROM ContentDocument WHERE Id IN :contentDocumentIds];
+            files = [SELECT Id, Title, CreatedDate, CreatedBy.Name FROM ContentDocument WHERE Id IN :contentDocumentIds];
         } else {
             files = new List<ContentDocument>();
         }

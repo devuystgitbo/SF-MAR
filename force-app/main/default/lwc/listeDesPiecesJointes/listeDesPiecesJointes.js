@@ -23,7 +23,7 @@ const columns = [
     },
 ];
 
-export default class ListeDesPiecesJointesCommunity extends LightningElement {
+export default class ListeDesPiecesJointes extends LightningElement {
 
     @api recordId;
     wiredAide;
@@ -37,7 +37,7 @@ export default class ListeDesPiecesJointesCommunity extends LightningElement {
         if (data) {
             data = JSON.parse(JSON.stringify(data));
             data.forEach(res => {
-                res.fileLink ='/partner/s/contentdocument/'+res.Id;
+                res.fileLink ='/lightning/r/ContentDocument/'+res.Id+'/view';
                 res.fileCreator = res.CreatedBy.Name;
             });
             this.files = data;

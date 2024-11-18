@@ -10,15 +10,15 @@
     </targets>
     <targetConfigs>
         <targetConfig targets="lightning__RecordPage">
-            <objects> 
-                <object>Projet__c</object>
-                <object>Lead</object>
-                <object>MPR__c</object>
-                <object>PropositionCommerciale__c</object>
-                <object>Audit__c</object>
-                <object>Facture__c</object>
-                <object>Case</object>
-            </objects> 
+          <objects>
+              <object>Projet__c</object>
+              <object>Lead</object>
+              <object>MPR__c</object>
+              <object>PropositionCommerciale__c</object>
+              <object>Audit__c</object>
+              <object>Facture__c</object>
+              <object>Case</object>
+          </objects>
       </targetConfig>
       <targetConfig targets="lightning__AppPage">
         <property name="recordId" type="String" />
