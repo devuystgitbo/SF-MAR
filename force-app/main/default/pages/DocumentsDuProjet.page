@@ -1,0 +1,33 @@
+<apex:page standardController="Projet__c" extensions="ProjetFilesController">
+    <h2>Fichiers liés au projet</h2>
+    <apex:pageBlock >
+        <apex:pageBlockTable value="{!files}" var="file">
+            <!-- Colonne pour le nom du fichier -->
+            <apex:column headerValue="Nom du fichier">
+                <apex:outputLink value="/sfc/servlet.shepherd/document/download/{!file.Id}" target="_blank">
+                    {!file.Title}
+                </apex:outputLink>
+            </apex:column>
+            
+            <!-- Colonne pour la date d'upload -->
+            <apex:column headerValue="Date d'upload">
+                <apex:outputText value="{0,date,dd/MM/yyyy}">
+                    <apex:param value="{!file.CreatedDate}" />
+                </apex:outputText>
+            </apex:column>
+
+            <!-- Lien pour l'aperçu du fichier -->
+            <apex:column headerValue="Aperçu">
+                <apex:outputLink value="/lightning/r/ContentDocument/{!file.Id}/view" target="_blank">
+                    Ouvrir en aperçu
+                </apex:outputLink>
+            </apex:column>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+    
+    <style>
+        input[name="attachfile"] {
+            display: none;
+        }
+    </style>
+</apex:page>
