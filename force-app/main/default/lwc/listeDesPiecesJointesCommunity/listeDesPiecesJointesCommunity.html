@@ -1,20 +1,36 @@
 <template>
-    <lightning-card icon-name= 'utility:file'>
-        
-        <h1 slot="title">Pièces jointes</h1>
+    <lightning-card icon-name="utility:file">
+        <!-- Titre et bouton Rafraîchir alignés sur la même ligne -->
+        <div slot="title" class="slds-grid slds-wrap slds-align-items-center">
+            <!-- Titre "Pièces jointes" -->
+            <div class="slds-col slds-grow">
+                <h1>Pièces jointes</h1>
+            </div>
+            <!-- Bouton Rafraîchir -->
+            <div class="slds-col slds-shrink slds-var-m-left_small">
+                <lightning-button 
+                    label="Rafraîchir" 
+                    onclick={handleRefresh}
+                    class="slds-m-left_x-small">
+                </lightning-button>
+            </div>
+        </div>
+
+        <!-- Tableau des pièces jointes -->
         <div class="slds-box slds-theme_default" if:true={files}>
             <lightning-datatable
                 key-field="Id"
                 data={files}
                 columns={columns}
                 hide-checkbox-column
-                default-sort-direction={defaultSortDirection}
-                sorted-by={sortedBy}
-                sorted-direction={sortDirection}
+                default-sort-direction="desc"
+                sorted-by="CreatedDate"
+                sorted-direction="desc"
                 onsort={onHandleSort}>
-                >
             </lightning-datatable>
         </div>
+
+        <!-- Gestion des erreurs -->
         <div if:true={error}>
             <p class="slds-text-align_center">{error}</p>
         </div>
