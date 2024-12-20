@@ -21,7 +21,13 @@ export default class ListeDesPiecesJointes extends LightningElement {
             label: 'Ajouté le',
             fieldName: 'CreatedDate',
             type: 'date',
-            typeAttributes: { month: '2-digit', day: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' } // Inclure l'heure
+            typeAttributes: { 
+                month: '2-digit', 
+                day: '2-digit', 
+                year: 'numeric', 
+                hour: '2-digit', 
+                minute: '2-digit' 
+            } // Inclure l'heure
         },
         { 
             label: 'Créé par',
@@ -50,9 +56,10 @@ export default class ListeDesPiecesJointes extends LightningElement {
     processFiles(data) {
         const tempData = data.map(file => ({
             ...file,
-            fileLink: `/lightning/r/ContentDocument/${file.Id}/view`, // Générer le lien vers le fichier
-            fileCreator: file.CreatedBy?.Name || 'Inconnu', // Gérer le cas où le créateur est null
-            CreatedDate: file.CreatedDate || 'N/A' // Gérer le cas où CreatedDate est null
+            // Construire le lien selon l'ancienne version en production
+            fileLink: `/s/contentdocument/${file.Id}`, // Utilise l'ID du ContentDocument
+            fileCreator: file.CreatedBy || 'Inconnu', // Gérer les cas où le créateur est null
+            CreatedDate: file.CreatedDate || 'N/A' // Gérer les cas où CreatedDate est null
         }));
 
         // Tri par 'CreatedDate' en ordre décroissant (date et heure)
